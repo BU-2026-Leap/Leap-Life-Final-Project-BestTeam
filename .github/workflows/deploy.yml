@@ -29,9 +29,9 @@ jobs:
 
       - name: Build Lambda package
         run: |
-          mkdir python
-          pip install -r requirements.txt -t python/
-          zip -r lambda.zip aws common fetch python/ \
+          pip install -r requirements.txt
+          rm -f lambda.zip
+          zip -r lambda.zip aws common fetch \
             -x "*/__pycache__/*" "*.pyc" ".DS_Store" "tests/*" "local/*"
 
       - name: Deploy to Lambda
