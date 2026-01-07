@@ -4,7 +4,7 @@ on:
   workflow_run:
     workflows: ["Python tests (pytest)"]
     types: [completed]
-    branches: [UI-Development]
+    branches: [main]
 
 jobs:
   deploy:
