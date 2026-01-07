@@ -29,6 +29,7 @@ jobs:
 
       - name: Build Lambda zip
         run: |
+          pip install -r requirements.txt -t .
           rm -f lambda.zip
           pip install -r requirements.txt -t python/
           zip -r lambda.zip aws common fetch python/ \
