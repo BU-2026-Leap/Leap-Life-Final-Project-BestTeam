@@ -2,8 +2,12 @@ from aws.s3_data_fetcher import S3DataFetcher
 from common.exam_data_processor import ExamDataProcessor
 from common.contracts import read_and_compute
 from datetime import datetime
+from fetch.api import fetch_stocks
 
 def build_html(stats):
+
+    stocks = fetch_stocks()
+
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return f"""<!DOCTYPE html>
 <html>
@@ -138,14 +142,14 @@ def build_html(stats):
         </thead>
         <tbody>
           <tr>
-            <td class="ticker">AAPL</td>
-            <td class="price">$185.50</td>
-            <td class="change positive">+2.5%</td>
+            <td class="ticker">{stocks.index[0]}</td>
+            <td class="price">{stocks.at[stocks.index[0], "c"]}</td>
+            <td class="change positive">{stocks.at[stocks.index[0], "dp"]}</td>
           </tr>
           <tr>
-            <td class="ticker">GOOGL</td>
-            <td class="price">$142.80</td>
-            <td class="change negative">-1.2%</td>
+            <td class="ticker">{stocks.index[1]}</td>
+            <td class="price">{stocks.at[stocks.index[1], "c"]}</td>
+            <td class="change negative">{stocks.at[stocks.index[1], "dp"]}</td>
           </tr>
         </tbody>
       </table>
