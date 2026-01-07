@@ -9,8 +9,8 @@ def entry(stock, info):
     return f"""
           <tr>
             <td class="ticker">{stock}</td>
-            <td class="price">{info["c"]}</td>
-            <td class="change {'positive' if info['dp'] > 0 else 'negative'}">{info["dp"]}</td>
+            <td class="price">${info["c"]}</td>
+            <td class="change {'positive' if info['dp'] > 0 else 'negative'}">{info["dp"]}%</td>
           </tr>
           """
 def build_html(stats):
