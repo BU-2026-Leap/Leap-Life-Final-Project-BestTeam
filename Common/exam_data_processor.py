@@ -1,4 +1,4 @@
-from contracts import DataProcessor, ExamScore
+from common.contracts import DataProcessor, ExamScore
 
 class ExamDataProcessor(DataProcessor):
     def compute_number_of_unique_students(self, scores: [ExamScore]) -> int:
@@ -7,7 +7,12 @@ class ExamDataProcessor(DataProcessor):
         """
 
         # TODO: implement here
-        return 0
+        unique_students = set()
+        for score in scores:
+            unique_students.add(score.student_id)
+        unique_student_count = len(unique_students)
+
+        return unique_student_count
 
     def compute_average_final(self, scores: [ExamScore]) -> float:
         """
@@ -15,4 +20,14 @@ class ExamDataProcessor(DataProcessor):
         """
 
         # TODO: implement here
-        return 0
+        finals_list = []
+        for score in scores:
+            if score.exam_name == "final":
+                finals_list.append(int(score.score))
+        #check that there's something in the list before computing average
+        if finals_list:
+            final_average = sum(finals_list) / len(finals_list)
+        else:
+            final_average = 0
+
+        return final_average
