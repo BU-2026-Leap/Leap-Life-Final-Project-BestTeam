@@ -142,12 +142,12 @@ def build_html(stats):
         </thead>
         <tbody>
           <tr>
-            <td class="ticker">{stocks[list(stocks.keys())[0]]}</td>
+            <td class="ticker">{list(stocks.keys())[0]}</td>
             <td class="price">{stocks[list(stocks.keys())[0]]["c"]}</td>
             <td class="change positive">{stocks[list(stocks.keys())[0]]["dp"]}</td>
           </tr>
           <tr>
-            <td class="ticker">{stocks[list(stocks.keys())[1]]}</td>
+            <td class="ticker">{list(stocks.keys())[1]}</td>
             <td class="price">{stocks[list(stocks.keys())[1]]["c"]}</td>
             <td class="change positive">{stocks[list(stocks.keys())[1]]["dp"]}</td>
           </tr>
