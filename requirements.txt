@@ -1,2 +1,3 @@
 finnhub-python
 pytest
+pandas
