@@ -4,9 +4,19 @@ from common.contracts import read_and_compute
 from datetime import datetime
 from fetch.api import fetch_stocks
 
+
+def entry(stock, info):
+    return f"""
+          <tr>
+            <td class="ticker">{stock}</td>
+            <td class="price">{info["c"]}</td>
+            <td class="change positive">{info["dp"]}</td>
+          </tr>
+          """
 def build_html(stats):
 
     stocks = fetch_stocks()
+    text = '\n'.join([entry(stock, info) for stock, info in stocks.items()])
 
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return f"""<!DOCTYPE html>
@@ -141,16 +151,7 @@ def build_html(stats):
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="ticker">{list(stocks.keys())[0]}</td>
-            <td class="price">{stocks[list(stocks.keys())[0]]["c"]}</td>
-            <td class="change positive">{stocks[list(stocks.keys())[0]]["dp"]}</td>
-          </tr>
-          <tr>
-            <td class="ticker">{list(stocks.keys())[1]}</td>
-            <td class="price">{stocks[list(stocks.keys())[1]]["c"]}</td>
-            <td class="change positive">{stocks[list(stocks.keys())[1]]["dp"]}</td>
-          </tr>
+            {text}
         </tbody>
       </table>
     </div>
