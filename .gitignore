@@ -44,4 +44,4 @@
 **/.gradle/
 **/build/
 *.pyc
-output.json
+.env
