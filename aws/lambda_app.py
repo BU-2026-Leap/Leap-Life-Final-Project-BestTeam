@@ -379,16 +379,16 @@ def build_html(stats):
         <tbody>
           <tr>
             <td class="ticker">{list(stocks.keys())[0]}</td>
-            <td class="price">${stocks[list(stocks.keys())[0]]["c"]:.2f}</td>
+            <td class="price">${stocks[list(stocks.keys())[0]]['c']:.2f}</td>
             <td class="change {'positive' if stocks[list(stocks.keys())[0]]['dp'] >= 0 else 'negative'}">
-              {'+' if stocks[list(stocks.keys())[0]]['dp'] >= 0 else ''}{stocks[list(stocks.keys())[0]]["dp"]:.1f}%
+              {'+' if stocks[list(stocks.keys())[0]]['dp'] >= 0 else ''}{stocks[list(stocks.keys())[0]]['dp']:.1f}%
             </td>
           </tr>
           <tr>
             <td class="ticker">{list(stocks.keys())[1]}</td>
-            <td class="price">${stocks[list(stocks.keys())[1]]["c"]:.2f}</td>
+            <td class="price">${stocks[list(stocks.keys())[1]]['c']:.2f}</td>
             <td class="change {'positive' if stocks[list(stocks.keys())[1]]['dp'] >= 0 else 'negative'}">
-              {'+' if stocks[list(stocks.keys())[1]]['dp'] >= 0 else ''}{stocks[list(stocks.keys())[1]]["dp"]:.1f}%
+              {'+' if stocks[list(stocks.keys())[1]]['dp'] >= 0 else ''}{stocks[list(stocks.keys())[1]]['dp']:.1f}%
             </td>
           </tr>
         </tbody>
