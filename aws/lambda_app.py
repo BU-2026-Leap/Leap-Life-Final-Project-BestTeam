@@ -33,7 +33,7 @@ def build_html(stats):
         border-radius: 16px;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         padding: 40px;
-        max-width: 600px;
+        max-width: 800px;
         width: 100%;
       }}
       
@@ -59,39 +59,67 @@ def build_html(stats):
         width: 100%;
       }}
       
-      .stats-grid {{
-        display: grid;
-        gap: 20px;
+      table {{
+        width: 100%;
+        border-collapse: collapse;
         margin-top: 20px;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }}
       
-      .stat-card {{
+      thead {{
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 12px;
-        padding: 24px;
         color: white;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        transition: transform 0.2s ease;
       }}
       
-      .stat-card:hover {{
-        transform: translateY(-4px);
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
-      }}
-      
-      .stat-label {{
-        font-size: 0.85em;
+      th {{
+        padding: 16px;
+        text-align: left;
+        font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        opacity: 0.9;
-        margin-bottom: 8px;
+        font-size: 0.85em;
+        letter-spacing: 0.5px;
+      }}
+      
+      td {{
+        padding: 16px;
+        border-bottom: 1px solid #e0e0e0;
+        color: #333;
+      }}
+      
+      tbody tr:hover {{
+        background: #f5f7fa;
+        transition: background 0.2s ease;
+      }}
+      
+      tbody tr:last-child td {{
+        border-bottom: none;
+      }}
+      
+      .ticker {{
+        font-weight: 600;
+        color: #1e3c72;
+        font-family: 'Courier New', monospace;
+      }}
+      
+      .price {{
+        font-family: 'Courier New', monospace;
         font-weight: 500;
       }}
       
-      .stat-value {{
-        font-size: 2em;
-        font-weight: 700;
+      .change {{
+        font-weight: 600;
         font-family: 'Courier New', monospace;
+      }}
+      
+      .positive {{
+        color: #22c55e;
+      }}
+      
+      .negative {{
+        color: #ef4444;
       }}
     </style>
   </head>
@@ -100,17 +128,27 @@ def build_html(stats):
       <h1>📊 Stock Tracker</h1>
       <div class="timestamp">⏰ {current_time}</div>
       
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-label">Average Score</div>
-          <div class="stat-value">{stats.average_final}</div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-label">Unique Students</div>
-          <div class="stat-value">{stats.unique_students}</div>
-        </div>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Current Price</th>
+            <th>Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ticker">AAPL</td>
+            <td class="price">$185.50</td>
+            <td class="change positive">+2.5%</td>
+          </tr>
+          <tr>
+            <td class="ticker">GOOGL</td>
+            <td class="price">$142.80</td>
+            <td class="change negative">-1.2%</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </body>
 </html>
