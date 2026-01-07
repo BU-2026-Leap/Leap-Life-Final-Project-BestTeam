@@ -30,7 +30,8 @@ jobs:
       - name: Build Lambda zip
         run: |
           rm -f lambda.zip
-          zip -r lambda.zip aws common fetch requirements.txt \
+          pip install -r requirements.txt -t python/
+          zip -r lambda.zip aws common fetch python/ \
             -x "*/__pycache__/*" "*.pyc" ".DS_Store" "tests/*" "local/*"
 
       - name: Deploy to Lambda
@@ -42,3 +43,4 @@ jobs:
       - name: Wait for update to complete
         run: |
           aws lambda wait function-updated --function-name Leap-Life-Final-BestTeam
+      
