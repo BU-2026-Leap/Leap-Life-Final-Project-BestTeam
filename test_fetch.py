@@ -11,11 +11,11 @@ finnhub_client = finnhub.Client(api_key=os.environ['API_KEY'])
 def test_csv():
 
     # Check if 'stocks.csv' exists
-    if not pathlib.Path("stocks.csv").exists():
+    if not pathlib.Path("fetch/stocks.csv").exists():
         raise FileNotFoundError("stocks.csv not found.")
 
     else:
-        df = pd.read_csv("stocks.csv")
+        df = pd.read_csv("fetch/stocks.csv")
 
         # Check if 'symbol' column exists
         if 'symbol' not in df.columns:
