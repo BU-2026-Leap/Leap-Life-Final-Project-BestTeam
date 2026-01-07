@@ -1,4 +1,4 @@
-from s3_data_fetcher import S3DataFetcher
+from aws.s3_data_fetcher import S3DataFetcher
 from common.exam_data_processor import ExamDataProcessor
 from common.contracts import read_and_compute
 
