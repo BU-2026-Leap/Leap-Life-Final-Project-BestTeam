@@ -1,19 +1,23 @@
 import os
-import finnhub
-import pandas as pd
+import urllib3
+import pathlib
 
-finnhub_client = finnhub.Client(api_key=os.environ['API_KEY'])
+def call_api(symbol:str):
+    response = urllib3.request(method='GET', url='https://finnhub.io/api/v1/quote',
+                               headers={'X-Finnhub-Token': os.environ['API_KEY']},
+                               fields={'symbol': symbol})
 
-def fetch_stocks() -> pd.DataFrame:
+    return eval(response.data.decode('UTF-8-sig'))
 
-    df = pd.read_csv("fetch/stocks.csv")
+def fetch_stocks() -> dict:
 
-    return pd.DataFrame([finnhub_client.quote(symbol) for symbol in df['symbol']], index=df['symbol'])
+    with pathlib.Path('fetch/stocks.csv').open(mode='r') as file:
+        stocks = file.read().split("\n")[1:]
+
+    return {stock: call_api(stock) for stock in stocks}
 
 if __name__ == "__main__":
     output = fetch_stocks()
-
-
 
 
 
