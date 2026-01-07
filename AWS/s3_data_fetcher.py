@@ -1,4 +1,4 @@
-from Common.contracts import DataFetcher, ExamScore
+from common.contracts import DataFetcher, ExamScore
 
 import boto3
 import csv
